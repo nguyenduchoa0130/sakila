@@ -9,15 +9,20 @@ import {
   Res,
   ValidationPipe,
 } from '@nestjs/common';
+import { ApiBody, ApiOperation, ApiTags } from '@nestjs/swagger';
 import { Response } from 'express';
 import { ActorsService } from './actors.service';
 import { CreateActorDto } from './dtos/create-actor.dto';
 
 @Controller('api/actors')
+@ApiTags('actors')
 export class ActorsController {
   constructor(private actorService: ActorsService) {}
 
   @Get()
+  @ApiOperation({
+    summary: 'Fetch all actors',
+  })
   async fetchAllActors() {
     try {
       const actors = await this.actorService.findAll();
@@ -32,6 +37,9 @@ export class ActorsController {
   }
 
   @Get(':id')
+  @ApiOperation({
+    summary: 'Fetch actor by actor_id',
+  })
   async fetchActorById(@Param('id', ParseIntPipe) id: number) {
     try {
       const actor = await this.actorService.findOne(id);
@@ -55,6 +63,16 @@ export class ActorsController {
   }
 
   @Post()
+  @ApiOperation({
+    summary: 'Create a new actor',
+  })
+  @ApiBody({
+    type: CreateActorDto,
+    examples: {
+      actor_success: {},
+      actor_err_400: {},
+    },
+  })
   async createActor(
     @Body(new ValidationPipe({ stopAtFirstError: true }))
     payload: CreateActorDto,
@@ -72,6 +90,9 @@ export class ActorsController {
   }
 
   @Delete(':id')
+  @ApiOperation({
+    summary: 'Delete an actor',
+  })
   async removeActor(
     @Param('id', ParseIntPipe) id: number,
     @Res() res: Response,

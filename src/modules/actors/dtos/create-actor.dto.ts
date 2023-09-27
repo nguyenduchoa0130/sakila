@@ -2,7 +2,7 @@ import { IsDefined, MaxLength, MinLength } from 'class-validator';
 
 export class CreateActorDto {
   @IsDefined({ message: 'First name is required' })
-  @MinLength(3, {
+  @MinLength(10, {
     message: 'First name is too short',
   })
   @MaxLength(45, {
@@ -11,7 +11,7 @@ export class CreateActorDto {
   first_name: string;
 
   @IsDefined({ message: 'Last name is required' })
-  @MinLength(3, {
+  @MinLength(10, {
     message: 'Last name is too short',
   })
   @MaxLength(45, {

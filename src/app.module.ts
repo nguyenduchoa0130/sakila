@@ -1,6 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ActorsModule } from './modules/actors/actors.module';
+import { FilmsModule } from './modules/films/films.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { ActorsModule } from './modules/actors/actors.module';
       entities: [__dirname + '/**/*.entity{.ts,.js}'],
     }),
     ActorsModule,
+    FilmsModule,
   ],
   controllers: [],
   providers: [],
