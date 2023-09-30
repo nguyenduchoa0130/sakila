@@ -1,19 +1,25 @@
+import { ApiProperty } from '@nestjs/swagger';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('film')
 export class Film {
+  @ApiProperty()
   @PrimaryGeneratedColumn({ type: 'smallint', unsigned: true, name: 'film_id' })
   film_id: number;
 
+  @ApiProperty()
   @Column({ type: 'varchar', length: 255, nullable: false })
   title: string;
 
+  @ApiProperty()
   @Column({ type: 'text', nullable: true })
   description: string;
 
+  @ApiProperty()
   @Column({ type: 'year', width: 4, nullable: true, name: 'release_year' })
   release_year: number;
 
+  @ApiProperty()
   @Column({
     type: 'tinyint',
     unsigned: true,
@@ -22,6 +28,7 @@ export class Film {
   })
   language_id: number;
 
+  @ApiProperty()
   @Column({
     type: 'tinyint',
     unsigned: true,
@@ -30,6 +37,7 @@ export class Film {
   })
   original_language_id: number | null;
 
+  @ApiProperty()
   @Column({
     type: 'tinyint',
     unsigned: true,
@@ -39,6 +47,7 @@ export class Film {
   })
   rental_duration: number;
 
+  @ApiProperty()
   @Column({
     type: 'decimal',
     precision: 4,
@@ -49,9 +58,11 @@ export class Film {
   })
   rental_rate: number;
 
+  @ApiProperty()
   @Column({ type: 'smallint', unsigned: true, nullable: true })
   length: number | null;
 
+  @ApiProperty()
   @Column({
     type: 'decimal',
     precision: 5,
@@ -62,6 +73,7 @@ export class Film {
   })
   replacement_cost: number;
 
+  @ApiProperty()
   @Column({
     type: 'enum',
     enum: ['G', 'PG', 'PG-13', 'R', 'NC-17'],
@@ -69,6 +81,7 @@ export class Film {
   })
   rating: string;
 
+  @ApiProperty()
   @Column({
     type: 'set',
     enum: ['Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes'],
@@ -77,6 +90,7 @@ export class Film {
   })
   special_features: string[] | null;
 
+  @ApiProperty()
   @Column({
     type: 'timestamp',
     default: () => 'CURRENT_TIMESTAMP',

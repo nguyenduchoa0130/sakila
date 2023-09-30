@@ -68,7 +68,7 @@ npm run start:dev
 
 ## Step 5
 
-Please use PostMan or something like that for testing
+- Please use PostMan or something like that for testing.
+- If you wanna visit docs, Please following this link: http://localhost:3000/docs
 
 # Happy Coding
-
