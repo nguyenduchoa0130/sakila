@@ -24,7 +24,7 @@ import {
   ApiResponse,
   ApiTags,
 } from '@nestjs/swagger';
-import { SakilaErrorResponse } from 'src/shared/models/api-doc.models';
+import { SakilaErrorResponse } from 'src/shared/types/models/api-doc.models';
 import { CreateFilmDto } from './dto/create-film.dto';
 import { Film } from './entities/film.entity';
 import {

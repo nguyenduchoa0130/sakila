@@ -24,7 +24,7 @@ import {
   ApiParam,
   ApiTags,
 } from '@nestjs/swagger';
-import { SakilaErrorResponse } from 'src/shared/models/api-doc.models';
+import { SakilaErrorResponse } from 'src/shared/types/models/api-doc.models';
 import { ActorsService } from './actors.service';
 import { CreateActorDto } from './dtos/create-actor.dto';
 import { Actor } from './entities/actor.entity';

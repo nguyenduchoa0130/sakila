@@ -1,10 +1,12 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { FilmRating } from 'src/shared/types/enums/film-rating.enum';
+import { SpecialFeature } from 'src/shared/types/enums/special-feature.enum';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('film')
 export class Film {
   @ApiProperty()
-  @PrimaryGeneratedColumn({ type: 'smallint', unsigned: true, name: 'film_id' })
+  @PrimaryGeneratedColumn({ type: 'smallint', unsigned: true })
   film_id: number;
 
   @ApiProperty()
@@ -16,35 +18,19 @@ export class Film {
   description: string;
 
   @ApiProperty()
-  @Column({ type: 'year', width: 4, nullable: true, name: 'release_year' })
+  @Column({ type: 'year', width: 4, nullable: true })
   release_year: number;
 
   @ApiProperty()
-  @Column({
-    type: 'tinyint',
-    unsigned: true,
-    nullable: false,
-    name: 'language_id',
-  })
+  @Column({ type: 'tinyint', unsigned: true, nullable: false })
   language_id: number;
 
   @ApiProperty()
-  @Column({
-    type: 'tinyint',
-    unsigned: true,
-    nullable: true,
-    name: 'original_language_id',
-  })
+  @Column({ type: 'tinyint', unsigned: true, nullable: true })
   original_language_id: number | null;
 
   @ApiProperty()
-  @Column({
-    type: 'tinyint',
-    unsigned: true,
-    nullable: false,
-    name: 'rental_duration',
-    default: 3,
-  })
+  @Column({ type: 'tinyint', unsigned: true, nullable: false, default: 3 })
   rental_duration: number;
 
   @ApiProperty()
@@ -53,7 +39,6 @@ export class Film {
     precision: 4,
     scale: 2,
     nullable: false,
-    name: 'rental_rate',
     default: 4.99,
   })
   rental_rate: number;
@@ -68,25 +53,19 @@ export class Film {
     precision: 5,
     scale: 2,
     nullable: false,
-    name: 'replacement_cost',
     default: 19.99,
   })
   replacement_cost: number;
 
   @ApiProperty()
-  @Column({
-    type: 'enum',
-    enum: ['G', 'PG', 'PG-13', 'R', 'NC-17'],
-    default: 'G',
-  })
+  @Column({ type: 'enum', enum: FilmRating, default: 'G' })
   rating: string;
 
   @ApiProperty()
   @Column({
     type: 'set',
-    enum: ['Trailers', 'Commentaries', 'Deleted Scenes', 'Behind the Scenes'],
+    enum: SpecialFeature,
     nullable: true,
-    name: 'special_features',
   })
   special_features: string[] | null;
 

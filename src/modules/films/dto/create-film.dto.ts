@@ -11,7 +11,7 @@ import {
   MaxLength,
   MinLength,
 } from 'class-validator';
-import { FilmRating } from 'src/shared/enums/film-rating.enum';
+import { FilmRating } from 'src/shared/types/enums/film-rating.enum';
 
 export class CreateFilmDto {
   @ApiProperty()
