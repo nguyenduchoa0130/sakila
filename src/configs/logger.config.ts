@@ -13,8 +13,8 @@ const loggerFormat = winston.format.combine(
   }),
 );
 
-const LOGTAIL_TOKEN = 'KavP3Nd3yHiFTF7AWf5nhpwk';
-const logtail = new Logtail(LOGTAIL_TOKEN);
+// const LOGTAIL_TOKEN = 'KavP3Nd3yHiFTF7AWf5nhpwk';
+// const logtail = new Logtail(LOGTAIL_TOKEN);
 
 export const loggerConfig = {
   transports: [
@@ -29,11 +29,6 @@ export const loggerConfig = {
       maxSize: '20m',
       maxFiles: '2d',
     }),
-    // new winston.transports.File({
-    //   format: loggerFormat,
-    //   dirname: 'logs',
-    //   filename: 'audit.log',
-    // }),
     // new LogtailTransport(logtail),
   ],
   exitOnError: false,
